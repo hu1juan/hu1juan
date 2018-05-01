@@ -1,0 +1,112 @@
+<div class="contacts-wrapper">
+	<div class="container-fluid container-fullw">
+		<div class="row">
+			<h2 class="pull-left">
+				<span>My Contacts</span>&nbsp;&nbsp;
+				<label class="hidden-sm hidden-xs">213 Total Contacts</label>&nbsp;
+				<label class="hidden-md hidden-sm hidden-xs">|</label>&nbsp;
+				<label class="hidden-md hidden-sm hidden-xs">Last Updated <strong><em>Yesterday June 4, 2016</em></strong></label>
+			</h2>
+			<div class="pull-right">
+				<span class="hidden-xs">
+					<button type="button"  class="btn add-contacts">
+						<img src="assets/icons/add_lg.svg" alt="" srcset="">&nbsp; Add Contacts
+					</button>
+				</span>&nbsp;
+				<span class="hidden-xs">
+					<button type="button"  class="btn merge-contacts">
+						<img src="assets/icons/merge.svg" alt="" srcset="">&nbsp; Merge Contacts
+					</button>
+				</span>
+				<i class="fa fa-search hidden-sm hidden-md hidden-lg"></i>
+			</div>
+		</div>
+		<div class="sm-wrapper hidden-sm hidden-md hidden-lg">
+			<div class="letter-wrapper">
+				<h6 ng-repeat="letter in vm.letters">{{letter}}</h6>
+			</div>
+			<input type="text" name="" id="" placeholder="A">
+			<div class="sample1">
+				<label class="label-check">
+					<input type="checkbox" checked>
+					<span class="fa-lg label-text"></span>{{vm.contactList[0].ClientLastName}}&nbsp;({{vm.contactList[0].ClientFirstName}})
+					<div class="icon-right">
+						<span>
+							<i class="fa fa-edit"></i>
+						</span>&nbsp;&nbsp;&nbsp;
+						<span>
+							<i class="fa fa-trash"></i>
+						</span>
+					</div>
+				</label>
+				<table>
+					<tbody>
+						<tr>
+							<td>Contact #:</td>
+							<td>{{vm.contactList[0].ClientContact}}</td>
+						</tr>
+						<tr>
+							<td>City:</td>
+							<td>{{vm.contactList[0].City}}</td>
+						</tr>
+						<tr>
+							<td>Adviser:</td>
+							<td>{{vm.contactList[0].Adviser}}</td>
+						</tr>
+						<tr>
+							<td>Client Type: </td>
+							<td>{{vm.contactList[0].ClientType}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<button class="btn">View Full Contact Info</button>
+				<div class="label-bottom" ng-repeat="contact in vm.contactList | limitTo: vm.contactList.length : 1">
+					<div class="line"></div>
+					<label class="label-check">
+						<input type="checkbox">
+						<span class="fa-lg label-text"></span>{{contact.ClientLastName}}&nbsp;({{contact.ClientFirstName}})
+					</label>
+				</div>
+				<button class="btn plus">+</button>
+			</div>			
+		</div>
+		<div class="row wrapper hidden-xs">
+			<div class="letter-wrapper">
+				<h6 ng-repeat="letter in vm.letters">{{letter}}</h6>
+			</div>
+			<div class="table-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th><input type="checkbox"></th>
+							<th>Family Name</th>
+							<th>City </th>
+							<th>Contact #</th>
+							<th>Adviser </th>
+							<th>Client Type</th>
+							<th><input type="text" class="form-control" placeholder="Search Contacts"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="contact in vm.contactList">
+							<td><input type="checkbox"></td>
+							<td class="td-name" ui-sref="app.records" ng-click="vm.selectedContact(contact)">{{contact.ClientLastName}}&nbsp;({{contact.ClientFirstName}})</td>
+							<td>{{contact.City}}</td>
+							<td>{{contact.ClientContact}}</td>
+							<td>{{contact.Adviser}}</td>
+							<td>{{contact.ClientType}}</td>
+							<td>
+								<span>
+									<i class="fa fa-edit"></i>
+								</span>&nbsp;&nbsp;&nbsp;
+								<span>
+									<i class="fa fa-trash"></i>
+								</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

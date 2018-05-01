@@ -1,0 +1,358 @@
+<div class="records-wrapper">
+    <section class="records-top">
+            <div class="col-sm-12">
+                    <!-- start: BREADCRUMB -->
+                    <div class="new-breadcrumb-wrapper clearfix">
+                        <ul class="breadcrumb-arrow">
+                            <li>
+                                <a href="#">
+                                    <img src="assets/icons/contacts_records.svg" alt="" srcset=""> Contacts
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    {{vm.clientList[0].LastName+' '+vm.clientList[0].FirstName}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+        
+                </div>
+    </section>
+    <section class="records-mid col-sm-12 col-xs-12">
+        <span class="hidden-xs">
+            <label>{{vm.clientList[0].LastName}}&nbsp;({{vm.clientList[0].FirstName}})</label>
+            <button class="btn email"><img src="assets/icons/new_email.svg">&nbsp;Send Email</button>
+            <button class="btn mail"><img src="assets/icons/new_mail.svg">&nbsp;Send Mail</button>
+            <button class="btn print"><img src="assets/icons/print.svg">&nbsp;Print Summary</button>
+            Last Updated <em><strong>Yesterday June 4, 2016</strong></em>
+        </span>
+        <div class="name hidden-sm hidden-md hidden-lg">
+            {{vm.clientList[0].LastName}}&nbsp;{{(vm.clientList[0].FirstName)}}
+        </div>
+        <div class="button hidden-sm hidden-md hidden-lg">
+            <button class="btn email"><img src="assets/icons/new_email.svg">&nbsp;Send Email</button>
+            <button class="btn mail"><img src="assets/icons/new_mail.svg">&nbsp;Send Mail</button>
+        </div>
+    </section>
+    <section class="records-bottom col-sm-12 col-xs-12">
+        <div class="records-left col-md-8 col-sm-12">
+            <div class="hidden-sm hidden-md hidden-lg">
+                <button type="button" class="btn btn-default" ng-click="vm.isCollapsed = !vm.isCollapsed">{{vm.navTabs[vm.tabIndex]}}<i class="fa fa-bars fa-lg pull-right"></i></button>
+                <div uib-collapse="vm.isCollapsed">
+                    <div class="well well-xs">
+                        <ul>
+                            <li ng-repeat="tabs in vm.navTabs" ng-click="vm.selectedTab($index)" ng-model="vm.tabIndex">{{tabs}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-header clearfix hidden-xs">
+                <uib-tabset active="SUMMARY">
+                    <uib-tab ng-repeat="tabs in vm.navTabs" heading="{{tabs}}" ng-click="vm.selectedTab($index)" ng-model="vm.tabIndex"></uib-tab>
+                </uib-tabset>
+            </div>
+
+            <div class="nav-summary" ng-if="vm.tabIndex === 0">
+                <h4 class="hidden-xs">
+                    <i class="fa fa-info-circle"></i>
+                        No address added to this client. To get directions, please add an address.
+                    <i class="pull-right fa fa-times"></i>
+                </h4>
+    
+                <div class="col-sm-5 client-wrapper">
+                    <h3>Clients <label class="pull-right">VIEW DETAILS</label></h3>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>ADULT</td>
+                                <td><div ng-repeat="clients in vm.clientList | filter: {Role : 'Adult'}">{{clients.Title+' '+clients.FirstName+' '+clients.LastName}}</div></td>
+                            </tr>
+                            <tr>
+                                <td>CHILDREN</td>
+                                <td><div ng-repeat="clients in vm.clientList | filter: {Role : 'Child'}">{{clients.Title+' '+clients.FirstName+' '+clients.LastName}}</div></td>
+                            </tr>
+                            <tr>
+                                <td>PHONE</td>
+                                <td><div ng-repeat="phone in vm.clientList[0].Phone">{{phone.Number}}</div></td>
+                            </tr>
+                            <tr>
+                                <td>EMAIL</td>
+                                <td><div class"email">{{vm.clientList[0].Email[0].EmailAddress}}</div></td>
+                            </tr>
+                            <tr>
+                                <td>ADDRESS</td>
+                                <td>{{vm.clientList[0].Address}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm-offset-1 col-sm-7">
+                    <div class="loans-wrapper">
+                        <h3>Loans <label class="pull-right">VIEW DETAILS</label></h3>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>$120,000</td>
+                                    <td>Borrowed by Cristie from <strong>Wespac</strong></td>
+                                    <td>Submitted to Lender</td>
+                                </tr>
+                                <tr>
+                                    <td>$120,000</td>
+                                    <td>Borrowed by Cristie from <strong>Wespac</strong></td>
+                                    <td>Submitted to Lender</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><br>
+                    <div class="benefits-wrapper">
+                        <h3>Existing Benefits &nbsp;<span>3</span><label class="pull-right">VIEW DETAILS</label></h3>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Benefit</td>
+                                    <td>Cover Amt / Excess</td>
+                                    <td>Insurer</td>
+                                </tr>
+                                <tr>
+                                    <td>Trauma Cover</td>
+                                    <td>$68,000</td>
+                                    <td><img src="http://via.placeholder.com/25x15" alt="" srcset=""></td>
+                                </tr>
+                                <tr>
+                                    <td>Car Accident</td>
+                                    <td>$55,000 Annually</td>
+                                    <td><img src="http://via.placeholder.com/25x15" alt="" srcset=""></td>
+                                </tr>
+                                <tr>
+                                    <td>Disability</td>
+                                    <td>$68,000</td>
+                                    <td><img src="http://via.placeholder.com/25x15" alt="" srcset=""></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-clients" ng-if="vm.tabIndex === 1">
+                <span class="pull-left hidden-sm hidden-md hidden-lg clients-label">Clients</span>
+                <div class="pull-right buttons">
+                    <button class="btn btn-sm"><i class="fa fa-plus"></i>&nbsp;Add Existing</button>
+                    <button class="btn btn-sm"><i class="fa fa-plus"></i>&nbsp;Add Client</button>
+                </div>
+                <div class="client-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Preferred Name</th>
+                                <th>DOB</th>
+                                <th>Gender</th>
+                                <th>Smoker</th>
+                                <th>Phone</th>
+                                <th>Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="clients in vm.clientList">
+                                <td>{{clients.FullName}}</td>
+                                <td>{{clients.PreferredName}}</td>
+                                <td>{{clients.DateOfBirth | date : "mediumDate"}}</td>
+                                <td>{{clients.Gender}}</td>
+                                <td>{{clients.SmokerStatus}}</td>
+                                <td>
+                                    <div ng-repeat="phone in clients.Phone">
+                                    <span ng-if="phone.Type === 'Work'"><i class="fa fa-briefcase"></i></span>
+                                    <span ng-if="phone.Type === 'Home'"><i class="fa fa-home"></i></span>
+                                    <span ng-if="phone.Type === 'Mobile'"><i class="fa fa-mobile fa-lg"></i></span>
+                                    {{phone.Number}}</div>
+                                </td>
+                                <td>{{clients.Role}}&nbsp;&nbsp;&nbsp;
+                                    <i class="fa fa-edit"></i>
+                                    <i class="fa fa-trash"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="relationships">
+                    <span>Relationships <button class="pull-right btn btn-sm" ng-click="vm.addRelationship()"><i class="fa fa-plus"></i>&nbsp;Add Relationships</button></span>
+                    <div class="add">
+                        <span ng-if="vm.relationship.length === 0">No Relationships Added</span>
+                    </div>
+                </div>
+                <div class="contact-information">
+                    <span>Contact Information</span>
+                    <div class="contact-information-inner col-sm-12 col-md-12">
+                        <div class="col-sm-12 col-md-6">
+                            <span>Home Address</span>
+                            <div class="address">
+                                <label>ADDRESS
+                                    <div class="address-box">
+                                        <div class="address-box-inner">
+                                            <div ng-repeat="address in vm.contactInformation.Addresses">{{address.formatted_address}}</div>
+                                            <div ng-if="vm.contactInformation.Addresses.length === 0">NO ADDRESS STATED!</div>
+                                        </div>
+                                        <label class="label-check">
+                                            <input type="checkbox" ng-model="vm.contactInformation.isMailingAddress">
+                                            <span class="fa-lg label-text"></span>same as Mailing Address
+                                        </label>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="line"></div>
+                            <span>Mailing Address</span>
+                            <div class="address">
+                                <label>ADDRESS
+                                    <div class="address-box">
+                                        <div class="address-box-inner">
+                                            <div ng-if="vm.contactInformation.isMailingAddress" ng-repeat="address in vm.contactInformation.Addresses">{{address.formatted_address}}</div>
+                                            <div ng-if="!vm.contactInformation.isMailingAddress">UNIT/FLAT NUMBER,<br>STREET ADDRESS</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="line"></div>
+                            <div class="bottom-check">
+                                <div>
+                                    <label class="label-check">
+                                        <input type="checkbox" ng-model="vm.contactInformation.isMarketing">
+                                        <span class="fa-lg label-text"></span>Include in marketing
+                                    </label>
+                                </div>
+                                <div>
+                                    <label class="label-check">
+                                        <input type="checkbox" ng-model="vm.contactInformation.isNewsletter">
+                                        <span class="fa-lg label-text"></span>Include in newsletters
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 contact-info-table">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>ADVISER</td>
+                                        <td>{{vm.contactInformation.AdviserFullName}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>EMAIL</td>
+                                        <td>{{vm.contactInformation.MainEmail}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>CLIENT TYPE</td>
+                                        <td>
+                                            <button ng-repeat="type in vm.contactInformation.ClientTypes" class="btn btn-sm">{{type}}
+                                                <i class="pull-right fa fa-times"></i>
+                                            </button>
+                                        </td>
+                                        <td><button class="btn">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>RATING</td>
+                                        <td>
+                                            <button ng-repeat="rating in vm.contactInformation.Rating" class="btn btn-sm">{{rating}}
+                                                <i class="pull-right fa fa-times"></i>
+                                            </button>
+                                        </td>
+                                        <td><button class="btn">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>REVIEW MONTH</td>
+                                        <td>{{vm.contactInformation.ReviewMonth}}</td>
+                                        <td><button class="btn">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>REFERENCE CODE</td>
+                                        <td>{{vm.contactInformation.ReferenceCode}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>REFERRAL SOURCE</td>
+                                        <td></td>
+                                        <td><button class="btn">+</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>CATEGORIES</td>
+                                        <td>
+                                            <button ng-repeat="category in vm.contactInformation.Categories" class="btn btn-sm">{{category}}
+                                                <i class="pull-right fa fa-times"></i>
+                                            </button>
+                                        </td>
+                                        <td><button class="btn">+</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="records-right col-md-offset-1 col-md-3 col-sm-12">
+            <div class="task-wrapper">
+                <div>
+                    <i class="fa fa-bars fa-lg"></i> &nbsp;
+                    <strong>ACTIVE TASKS</strong>&nbsp;&nbsp;
+                    <strong class="inactive">INACTIVE TASKS</strong>
+                </div>
+                <div class="line"></div>
+                <div>
+                    <label class="label-check">
+                        <input type="checkbox">
+                        <span class="fa-lg label-text"></span><strong>Meeting</strong>&nbsp; <span class="due">DUE TODAY</span>
+                    </label>
+                    <h6>Meeting for Insurance Application</h6>
+                    <h6><i class="fa fa-user"></i>&nbsp;<strong> James Punnet</strong></h6>
+                </div>
+                <div class="line"></div>
+                <div>
+                    <label class="label-check">
+                        <input type="checkbox">
+                        <span class="fa-lg label-text"></span><strong>Submit Report</strong> &nbsp; <span class="due">DUE TODAY</span>
+                    </label>
+                    <h6>Send Details to Loan Market</h6>
+                    <h6><i class="fa fa-user"></i>&nbsp;<strong> Claurence Marketer</strong></h6>
+                </div>
+            </div>
+            <div class="recent-wrapper">
+                <div>
+                    <i class="fa fa-bookmark fa-lg"></i>&nbsp;
+                    <strong>RECENT ACTIVITY</strong>
+                    <strong class="view pull-right">VIEW ALL</strong>
+                </div>
+                <div class="line"></div>
+                <div>
+                    <div class="box pull-left"><i class="fa fa-envelope fa-lg"></i></div>
+                    <h6><strong>Follow up email sent</strong></h6>
+                    <h6>Email sent to <strong class="email">c.adams@gmail.com</strong></h6>
+                </div>
+                <div class="task">
+                    <div class="box pull-left"><i class="fa fa-check fa-lg"></i></div>
+                    <h6><strong>1 Task Completed</strong></h6>
+                    <h6>This is a sample of a task</h6>
+                </div>
+            </div>
+            <div class="notes-wrapper">
+                <div>
+                    <i class="fa fa-sticky-note fa-lg"></i>&nbsp;
+                    <strong>NOTES</strong>
+                    <strong class="view pull-right">VIEW ALL</strong>
+                </div>
+                <div class="line"></div>
+                <div>
+                    <h6><strong>NOTES HEADING SAMPLE</strong></h6>
+                    <h6>Sea fifth was grass seasons one rule. Beginning earth them bearing.</h6>
+                </div>
+                <div class="line"></div>
+                <button class="btn">+ Create Note</button>
+            </div>
+        </div>
+    </section>
+</div>
