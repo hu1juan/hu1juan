@@ -70,6 +70,9 @@ body {
 .navbar .navbar-header .navbar-brand {
   color: #ffffff !important;
 }
+.navbar .navbar-header .navbar-brand .mini-logo {
+  margin-left: -50px !important;
+}
 .navbar .navbar-header .menu-toggler {
   color: rgba(255, 255, 255, 0.7) !important;
 }

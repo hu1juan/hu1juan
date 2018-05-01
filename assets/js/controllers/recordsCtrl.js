@@ -1,8 +1,8 @@
 'use strict'
 
 
-app.controller('RecordsCtrl', ["$scope", "ContactService", "NEW_CONST", "$location", "$uibModal", "$stateParams", 
-    function ($scope, ContactService, NEW_CONST, $location, $uibModal, $stateParams) {
+app.controller('RecordsCtrl', ["$scope", "ContactService", "NEW_CONST", "$location", "$uibModal", "$stateParams", "$state", 
+    function ($scope, ContactService, NEW_CONST, $location, $uibModal, $stateParams, $state) {
         var vm = this;
         vm.navTabs = ["SUMMARY","CLIENTS","LOANS","INSURANCE","FINANCIALS","WORKFLOW","RECORDS"];
         vm.clientList = [];

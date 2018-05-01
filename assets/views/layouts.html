@@ -90,7 +90,7 @@
 					<tbody>
 						<tr ng-repeat="contact in vm.contactList">
 							<td><input type="checkbox"></td>
-							<td class="td-name" ui-sref="app.records" ng-click="vm.selectedContact(contact)">{{contact.ClientLastName}}&nbsp;({{contact.ClientFirstName}})</td>
+							<td class="td-name" ng-click="vm.selectedContact(contact)">{{contact.ClientLastName}}&nbsp;({{contact.ClientFirstName}})</td>
 							<td>{{contact.City}}</td>
 							<td>{{contact.ClientContact}}</td>
 							<td>{{contact.Adviser}}</td>

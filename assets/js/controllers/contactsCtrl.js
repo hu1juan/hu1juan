@@ -14,7 +14,8 @@ app.controller('ContactsCtrl', ["$scope", "ContactService", "NEW_CONST", "$locat
         });
 
         vm.selectedContact = function (contact){
-            let param = contact.FamilyID;
-            $state.go('app.records', {contactID: param});
+            if(contact.FamilyID){
+                $state.go('app.records', {contactID: contact.FamilyID});
+            }
         }
 }]);
